@@ -1,0 +1,12 @@
+spring:
+  profiles:
+    active: dev
+
+springdoc:
+  swagger-ui:
+    path: /swagger-ui-curso.html
+
+app:
+  jwt:
+    secret-key: ba4b1059e48ee04d14abf7b8ea65f3303e1587e41f6a3955b1d80723657037a8
+    expiration: 60480000
