@@ -1,7 +1,6 @@
 package com.erich.hibernate.controller;
 
 import com.erich.hibernate.dto.CursoDto;
-import com.erich.hibernate.entity.Curso;
 import com.erich.hibernate.services.impl.CursoServiceImpl;
 import jakarta.validation.Valid;
 import org.springframework.security.access.prepost.PreAuthorize;
