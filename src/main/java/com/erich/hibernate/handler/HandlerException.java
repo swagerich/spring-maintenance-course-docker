@@ -26,7 +26,7 @@ public class HandlerException {
     }
 
     @ExceptionHandler(ResourceException.class)
-    public ProblemDetail notFoundExceptionHandler(ResourceException e) {
+    public ProblemDetail resourceExceptionHandler(ResourceException e) {
         ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
         problemDetail.setTitle("Bad-Request");
         problemDetail.setDetail(e.getMessage());
@@ -35,7 +35,7 @@ public class HandlerException {
     }
 
     @ExceptionHandler(Exception.class)
-    public ProblemDetail notFoundExceptionHandler(Exception e) {
+    public ProblemDetail internalServerExceptionHandler(Exception e) {
         ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.INTERNAL_SERVER_ERROR);
         problemDetail.setTitle("SERVER_ERROR");
         problemDetail.setDetail(e.getMessage());
@@ -44,7 +44,7 @@ public class HandlerException {
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public ProblemDetail methodNOotValidHandlerException(MethodArgumentNotValidException e) {
+    public ProblemDetail methodNotValidHandlerException(MethodArgumentNotValidException e) {
         ProblemDetail problemDetail = ProblemDetail.forStatus(HttpStatus.BAD_REQUEST);
         Map<String, String> mapErrores = new HashMap<>();
         e.getBindingResult().getFieldErrors().forEach(er -> {

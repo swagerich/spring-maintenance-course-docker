@@ -20,11 +20,11 @@ public class SwaggerConfig {
         final String bearer = "bearer";
 
         return new OpenAPI().info(new Info().title("Spring Cursos API Documentation")
-                        .description("Spring Blog API REST By Erich")
+                        .description("Spring Cursos API REST By Erich")
                         .version("v3.0.2")
                         .license(new License().name("Apache 3.0").url("https://spring.io")))
                 .externalDocs(new ExternalDocumentation()
-                        .description("Spring Blog Proyect Documentation ")
+                        .description("Spring Cursos Proyect Documentation ")
                         .url("https://github.com/swagerich/"))
                 .addSecurityItem(new SecurityRequirement().addList(securityScheme))
                 .components(new Components()

@@ -5,7 +5,6 @@ import com.erich.hibernate.entity.Alumno;
 import com.erich.hibernate.services.impl.AlumnoServiceImpl;
 
 import jakarta.validation.Valid;
-import org.springframework.security.access.annotation.Secured;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,7 +26,7 @@ public class AlumnoController {
         return alumnoService.create(alumnoDto);
     }
 
-    @PreAuthorize("hasRole({'ADMIN','USER'})")
+    @PreAuthorize("hasAnyRole({'ADMIN','USER'})")
     @GetMapping("/alumnos/{name}/{edad}")
     public List<Alumno> findAllNameAndEdad(@PathVariable String name, @PathVariable Integer edad) {
         return alumnoService.findByNameAndEdad(name, edad);

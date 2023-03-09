@@ -1,7 +1,7 @@
 ## Table maintenance using Spring boot
 # Tech 
 <!-- TOC -->
-    * [Table maintenance using Spring Boot 3](#table-maintenance-using-spring-boot)
+    * [Maintenance using Spring Boot 3](#table-maintenance-using-spring-boot)
 * [Spring 6]()
 * [Spring Boot 3]()
 * [Spring Security]()
@@ -11,6 +11,6 @@
 * [Validation ]()
 * [JWT ]()
 * [MYSQL 8 ]()
-* [Junit Jupiter 5 ]()
+* [Junit Jupiter 5 & Mockito ]()
 * [Spring Data JPA]()
 <!-- TOC -->

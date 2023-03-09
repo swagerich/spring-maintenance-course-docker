@@ -1,6 +1,7 @@
 package com.erich.hibernate.repository.custom.impl;
 
 import com.erich.hibernate.entity.Alumno;
+import com.erich.hibernate.entity.model.Alumno_;
 import com.erich.hibernate.repository.custom.AlumnoRepositoryCustom;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
@@ -17,13 +18,13 @@ public class AlumnoRepositoryCustomImpl implements AlumnoRepositoryCustom {
     private EntityManager entityManager;
 
     @Override
-    public List<Alumno> findByNameAndEdad(String name ,Integer edad) {
+    public List<Alumno> findByNameAndEdad(String nombre ,Integer edad) {
         CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         CriteriaQuery<Alumno> critera = criteriaBuilder.createQuery(Alumno.class);
         Root<Alumno> root = critera.from(Alumno.class);
-        Predicate predicateName = criteriaBuilder.equal(root.get("nombre"), name);
-        Predicate predicateEdad = criteriaBuilder.equal(root.get("edad"), edad);
-        critera.where(criteriaBuilder.and(predicateName,predicateEdad));
+        Predicate predicateName = criteriaBuilder.equal(root.get(Alumno_.NOMBRE), nombre);
+        Predicate predicateEdad = criteriaBuilder.equal(root.get(Alumno_.EDAD), edad);
+        critera.where(criteriaBuilder.or(predicateName,predicateEdad));
 
         TypedQuery<Alumno> query = entityManager.createQuery(critera);
         // Stream<AlumnoDto> stream = query.getResultStream();

@@ -3,6 +3,7 @@ package com.erich.hibernate.controller;
 import com.erich.hibernate.dto.CursoDto;
 import com.erich.hibernate.services.impl.CursoServiceImpl;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,7 +19,7 @@ public class CursoController {
         this.cursoService = cursoService;
     }
 
-    @PreAuthorize("hasRole({'ADMIN','USER'})")
+    @PreAuthorize("hasAnyRole({'ADMIN','USER'})")
     @PostMapping
     public CursoDto create(@Valid @RequestBody CursoDto cursoDto){
         return cursoService.create(cursoDto);
@@ -29,8 +30,9 @@ public class CursoController {
         return cursoService.findAll();
     }
 
-    @PreAuthorize("hasRole({'ADMIN','USER'})")
+    @PreAuthorize("hasAnyRole({'ADMIN','USER'})")
     @PutMapping("{id}")
+    @ResponseStatus(HttpStatus.CREATED)
     public CursoDto update(@Valid @RequestBody CursoDto cursoDto,@PathVariable Long id){
         return cursoService.update(cursoDto,id);
     }
